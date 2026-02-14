@@ -4,8 +4,9 @@ import { useState } from "react";
 import { ActivityFeed } from "@/components/ActivityFeed";
 import { CalendarView } from "@/components/CalendarView";
 import { GlobalSearch } from "@/components/GlobalSearch";
+import { GoogleSearchConsole } from "@/components/GoogleSearchConsole";
 
-type Tab = "activity" | "calendar" | "search";
+type Tab = "activity" | "calendar" | "search" | "gsc";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<Tab>("activity");
@@ -24,6 +25,7 @@ export default function Home() {
               { id: "activity" as const, label: "Activity Feed", icon: "📋" },
               { id: "calendar" as const, label: "Calendar", icon: "📅" },
               { id: "search" as const, label: "Search", icon: "🔍" },
+              { id: "gsc" as const, label: "Search Console", icon: "📊" },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -46,6 +48,7 @@ export default function Home() {
         {activeTab === "activity" && <ActivityFeed />}
         {activeTab === "calendar" && <CalendarView />}
         {activeTab === "search" && <GlobalSearch />}
+        {activeTab === "gsc" && <GoogleSearchConsole />}
       </main>
     </div>
   );
